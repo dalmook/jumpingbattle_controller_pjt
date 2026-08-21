@@ -1,0 +1,54 @@
+import assert from "node:assert/strict";
+import { readFile } from "node:fs/promises";
+import test from "node:test";
+
+test("POS V2 keeps the requested five-area navigation and Phase 2 payment engine", async () => {
+  const source = await readFile(new URL("../app/admin/v2/PosV2.tsx", import.meta.url), "utf8");
+  for (const label of ["홈", "예약", "결제", "회원", "더보기"]) assert.match(source, new RegExp(`label: "${label}"`));
+  assert.match(source, /TerminalPaymentControls/);
+  assert.match(source, /\/api\/admin\/payments|Phase 2의 검증된 MPOS/);
+  assert.match(source, /\/api\/admin\/members/);
+  assert.match(source, /<RemoteControlPanel/);
+  assert.match(source, /onCommand=\{sendControl\}/);
+  assert.match(source, /onStartNeedsInfo=\{openRoomReservation\}/);
+  assert.match(source, /<QuickBookingModal/);
+  assert.doesNotMatch(source, /function RoomLiveCard/);
+  assert.match(source, /<ScheduleBoard/);
+  assert.match(source, /onMove=\{moveReservationTo\}/);
+  assert.match(source, /createReservationFromSchedule/);
+  assert.match(source, /\+ 다회권 구매/);
+  assert.match(source, /다회권으로 이용/);
+  assert.match(source, /passPurchaseCreditUses/);
+  assert.match(source, /ReservationDetailCard/);
+  assert.match(source, /예약·결제 상세 관리/);
+  assert.match(source, /memberLinkOpen/);
+  assert.match(source, /이름·팀명·전화번호 바로 검색/);
+  assert.match(source, /stampEarnCount/);
+  assert.match(source, /스탬프 적립/);
+  assert.doesNotMatch(source, />예약 칸 통합 관리</);
+  assert.match(source, /스탬프 원장/);
+  assert.match(source, /title="결제 내역"/);
+  assert.match(source, /부가매출 결제/);
+  assert.match(source, /extraAddOnItems/);
+  assert.match(source, /항목 추가·가격 설정/);
+  assert.match(source, /cancelAddOnPayment/);
+  assert.match(source, /cancelHistoryPayment/);
+  assert.match(source, /deleteHistoryPayment/);
+  assert.match(source, /paymentConfirm/);
+  assert.match(source, /label="예약금"/);
+  assert.match(source, /네이버 선결제·당일 취소/);
+  assert.match(source, /label="총매출"/);
+  assert.match(source, /당일 결제 누계/);
+  assert.match(source, /취소 내역을 삭제할까요/);
+  assert.doesNotMatch(source, /title="결제할 예약"/);
+});
+
+test("POS V2 has responsive mobile sheets and 360-430 compatible navigation", async () => {
+  const css = await readFile(new URL("../app/admin/v2/pos-v2.css", import.meta.url), "utf8");
+  assert.match(css, /@media \(max-width:760px\)/);
+  assert.match(css, /grid-template-columns:repeat\(5,1fr\)/);
+  assert.match(css, /env\(safe-area-inset-bottom\)/);
+  assert.match(css, /pos-sheet/);
+  assert.match(css, /pos-payment-history-row/);
+  assert.match(css, /pos-add-on-checkout/);
+});

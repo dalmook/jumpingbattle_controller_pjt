@@ -1,0 +1,921 @@
+/*
+ * Final 27-inch kiosk overrides.
+ *
+ * This file is intentionally isolated from kiosk.css and kiosk-home.css.
+ * Import it after both files so these rules are the final responsive layer.
+ * Target viewports: 1080x1920, 864x1536, 720x1280 and 1920x1080.
+ */
+
+.kiosk-shell {
+  --kiosk27-tap-min: 72px;
+  --kiosk27-action-height: 80px;
+  --kiosk27-input-height: 78px;
+  --kiosk27-card-radius: 26px;
+  --kiosk27-control-radius: 20px;
+  --kiosk27-page-gutter: clamp(18px, 2.4vw, 42px);
+  min-height: 100dvh;
+}
+
+/* Large, consistent touch targets without changing icon-only controls. */
+.kiosk-shell .kiosk-primary,
+.kiosk-shell .kiosk-secondary,
+.kiosk-shell .choice-stack > button,
+.kiosk-shell .reservation-list > button,
+.kiosk-shell .identity-split > section > button,
+.kiosk-shell .payment-method-buttons button,
+.kiosk-shell .team-submit-actions button,
+.kiosk-shell .saved-team-panel > button,
+.kiosk-shell .guidance-summary-card > button {
+  min-height: var(--kiosk27-action-height);
+  border-radius: var(--kiosk27-control-radius);
+  font-size: clamp(19px, 1.75vw, 24px);
+}
+
+.kiosk-shell .kiosk-field input,
+.kiosk-shell .kiosk-field select,
+.kiosk-shell .kiosk-field textarea,
+.kiosk-shell .extra-member-form input,
+.kiosk-shell .payment-plan-panel input {
+  min-height: var(--kiosk27-input-height);
+  padding-inline: 22px;
+  border-radius: var(--kiosk27-control-radius);
+  font-size: clamp(20px, 1.9vw, 26px);
+}
+
+.kiosk-shell .kiosk-field textarea {
+  min-height: 144px;
+  padding-block: 18px;
+}
+
+.kiosk-shell .kiosk-counter button {
+  width: var(--kiosk27-tap-min);
+  min-width: var(--kiosk27-tap-min);
+  height: var(--kiosk27-tap-min);
+  min-height: var(--kiosk27-tap-min);
+}
+
+.kiosk-shell .payment-count-control button,
+.kiosk-shell .room-overview .room-strip article > button {
+  min-width: var(--kiosk27-tap-min);
+  min-height: var(--kiosk27-tap-min);
+}
+
+.kiosk-shell .kiosk-logo,
+.kiosk-shell .kiosk-footer button {
+  min-height: var(--kiosk27-tap-min);
+}
+
+.kiosk-shell .kiosk-logo {
+  padding-block: 8px;
+}
+
+.kiosk-shell .kiosk-footer button {
+  padding-inline: 20px;
+}
+
+.kiosk-shell .agree {
+  min-height: var(--kiosk27-tap-min);
+}
+
+.kiosk-shell .agree input {
+  width: 32px;
+  min-width: 32px;
+  height: 32px;
+}
+
+.kiosk-shell .kiosk-step,
+.kiosk-shell .status-screen {
+  border-radius: clamp(24px, 2.2vw, 34px);
+}
+
+.kiosk-shell .kiosk-step {
+  padding: clamp(30px, 3.2vw, 52px);
+}
+
+.kiosk-shell .kiosk-step h2,
+.kiosk-shell .status-screen h2 {
+  font-size: clamp(36px, 4vw, 52px);
+  line-height: 1.15;
+  word-break: keep-all;
+}
+
+/* Stable home hierarchy. These selectors deliberately outrank legacy patches. */
+.kiosk-shell .home-operating .home-primary-grid,
+.kiosk-shell .home-operating .home-secondary-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.kiosk-shell .home-operating .home-primary-grid .home-card {
+  min-height: clamp(360px, 28dvh, 460px);
+  border-radius: 30px;
+}
+
+.kiosk-shell .home-operating .home-secondary-grid .home-card {
+  min-height: 124px;
+  border-radius: 22px;
+}
+
+.kiosk-shell .home-operating .room-overview {
+  border-radius: var(--kiosk27-card-radius);
+}
+
+.kiosk-shell .room-overview .room-strip {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+/* Fixed bottom navigation remains reachable above Windows touch keyboard/UI. */
+.kiosk-shell .kiosk-bottom-nav {
+  width: min(980px, calc(100% - var(--kiosk27-page-gutter) - var(--kiosk27-page-gutter)));
+  min-height: 100px;
+  grid-template-columns: 156px 156px minmax(0, 1fr);
+}
+
+.kiosk-shell .kiosk-bottom-nav > button {
+  min-height: 74px;
+  font-size: clamp(18px, 1.8vw, 22px);
+}
+
+/* Full-height sheet with large close/confirm targets and bounded scrolling. */
+.kiosk-shell .guidance-detail-sheet {
+  padding: clamp(14px, 2.2vw, 30px);
+}
+
+.kiosk-shell .guidance-detail-sheet > section,
+.kiosk-shell .guidance-detail-sheet > article,
+.kiosk-shell .guidance-detail-sheet > div {
+  width: min(960px, 100%);
+  max-height: min(82dvh, 1100px);
+  padding: clamp(26px, 3vw, 40px);
+  overscroll-behavior: contain;
+}
+
+.kiosk-shell .guidance-detail-sheet header button {
+  width: 72px;
+  min-width: 72px;
+  height: 72px;
+  min-height: 72px;
+}
+
+.kiosk-shell .guidance-detail-sheet .sheet-confirm {
+  min-height: 72px;
+  font-size: 21px;
+}
+
+/* 1080x1920 portrait: spacious two-column home and four-room overview. */
+@media (orientation: portrait) and (min-width: 1051px) {
+  .kiosk-shell .kiosk-header {
+    height: 88px;
+  }
+
+  .kiosk-shell .kiosk-stage {
+    width: min(1000px, calc(100% - 48px));
+    padding-top: 24px;
+  }
+
+  .kiosk-shell .home-operating .home-primary-grid .home-card {
+    min-height: 440px;
+  }
+
+  .kiosk-shell .room-overview .room-strip {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+/* 864x1536 and 720x1280 portrait: avoid four cramped room columns. */
+@media (orientation: portrait) and (min-width: 701px) and (max-width: 1050px) {
+  .kiosk-shell {
+    --kiosk27-action-height: 76px;
+    --kiosk27-input-height: 74px;
+  }
+
+  .kiosk-shell .kiosk-stage {
+    width: min(920px, calc(100% - 32px));
+    padding-top: 18px;
+  }
+
+  .kiosk-shell .home-operating .home-primary-grid .home-card {
+    min-height: clamp(320px, 26dvh, 400px);
+    padding: 30px 20px;
+  }
+
+  .kiosk-shell .home-operating .home-secondary-grid .home-card {
+    min-height: 112px;
+    padding: 18px;
+  }
+
+  .kiosk-shell .home-operating .home-secondary-grid .home-card div > b {
+    white-space: normal;
+  }
+
+  .kiosk-shell .home-operating .home-secondary-grid .home-card > div {
+    min-width: 0;
+  }
+
+  .kiosk-shell .room-overview .room-strip {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .kiosk-shell .room-overview .room-strip article {
+    min-height: 210px;
+    aspect-ratio: auto;
+  }
+
+  .kiosk-shell .people-room-layout,
+  .kiosk-shell .team-vehicle-form,
+  .kiosk-shell .team-vehicle-layout,
+  .kiosk-shell .team-vehicle-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .kiosk-shell .room-size-compact-grid > button {
+    min-height: clamp(230px, 20dvh, 280px);
+  }
+}
+
+@media (orientation: portrait) and (min-width: 701px) and (max-width: 800px) {
+  .kiosk-shell .home-operating .home-secondary-grid .home-card > div {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+
+  .kiosk-shell .home-operating .home-secondary-grid .home-card div > b {
+    font-size: clamp(20px, 3.2vw, 23px);
+    line-height: 1.25;
+  }
+}
+
+/* 1920x1080 and shorter landscape displays: remove portrait-scale vertical bulk. */
+@media (orientation: landscape) and (min-width: 1051px) and (max-height: 1200px) {
+  .kiosk-shell {
+    --kiosk27-action-height: 76px;
+    --kiosk27-input-height: 76px;
+  }
+
+  .kiosk-shell .kiosk-header {
+    height: 76px;
+  }
+
+  .kiosk-shell .kiosk-stage {
+    width: min(1700px, calc(100% - 40px));
+    padding: 12px 0 18px;
+  }
+
+  .kiosk-shell .home-operating .home-copy {
+    min-height: 68px;
+    padding: 8px 4px 12px;
+  }
+
+  .kiosk-shell .home-operating .home-copy p {
+    margin-bottom: 4px;
+  }
+
+  .kiosk-shell .home-operating .home-copy h1 {
+    margin-bottom: 3px;
+    font-size: clamp(28px, 2.25vw, 38px);
+  }
+
+  .kiosk-shell .home-operating .home-copy > span {
+    font-size: 15px;
+  }
+
+  .kiosk-shell .home-operating .home-primary-grid {
+    gap: 14px;
+  }
+
+  .kiosk-shell .home-operating .home-primary-grid .home-card {
+    min-height: clamp(220px, 27vh, 290px);
+    padding: 24px;
+  }
+
+  .kiosk-shell .home-operating .home-primary-grid .home-card .kiosk-icon {
+    width: 68px;
+    height: 68px;
+    margin-bottom: 10px;
+    border-radius: 21px;
+  }
+
+  .kiosk-shell .home-operating .home-primary-grid .home-card div > b {
+    font-size: clamp(30px, 2.5vw, 40px);
+  }
+
+  .kiosk-shell .home-operating .home-secondary-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+
+  .kiosk-shell .home-operating .home-secondary-grid .home-card {
+    min-height: 104px;
+    padding: 15px 17px;
+  }
+
+  .kiosk-shell .home-operating .home-secondary-grid .home-card div > b {
+    font-size: clamp(18px, 1.4vw, 23px);
+    white-space: normal;
+  }
+
+  .kiosk-shell .home-operating .home-secondary-grid .home-card div > span {
+    font-size: 13px;
+  }
+
+  .kiosk-shell .room-overview .room-strip article {
+    min-height: 140px;
+    aspect-ratio: auto;
+    gap: 8px;
+    padding: 12px;
+  }
+
+  .kiosk-shell .room-overview .room-code b {
+    font-size: clamp(38px, 3vw, 52px);
+  }
+
+  .kiosk-shell .room-overview .room-live-copy strong {
+    font-size: clamp(16px, 1.4vw, 21px);
+  }
+
+  .kiosk-shell .room-overview .room-live-copy small {
+    min-height: 0;
+    font-size: 12px;
+  }
+
+  .kiosk-shell .kiosk-step {
+    margin-top: 4px;
+    padding: 28px 36px;
+  }
+
+  .kiosk-shell .kiosk-step h2,
+  .kiosk-shell .status-screen h2 {
+    font-size: clamp(34px, 3vw, 46px);
+  }
+
+  .kiosk-shell .guidance-detail-sheet {
+    align-items: center;
+  }
+
+  .kiosk-shell .guidance-detail-sheet > section,
+  .kiosk-shell .guidance-detail-sheet > article,
+  .kiosk-shell .guidance-detail-sheet > div {
+    max-height: calc(100dvh - 28px);
+    border-radius: 26px;
+  }
+}
+
+/* 1366x768-class compact landscape remains touchable while fitting one view. */
+@media (orientation: landscape) and (min-width: 1051px) and (max-height: 800px) {
+  .kiosk-shell .home-operating .home-copy {
+    min-height: 52px;
+    padding-block: 4px 8px;
+  }
+
+  .kiosk-shell .home-operating .home-copy > span {
+    display: none;
+  }
+
+  .kiosk-shell .home-operating .home-primary-grid .home-card {
+    min-height: clamp(190px, 27vh, 220px);
+  }
+
+  .kiosk-shell .home-operating .home-secondary-grid .home-card {
+    min-height: 90px;
+  }
+
+  .kiosk-shell .room-overview .room-strip article {
+    min-height: 112px;
+  }
+}
+
+/* Narrow fallback: one primary choice per row and two readable room tiles. */
+@media (max-width: 700px) {
+  .kiosk-shell {
+    --kiosk27-action-height: 76px;
+    --kiosk27-input-height: 76px;
+    --kiosk27-page-gutter: 12px;
+  }
+
+  .kiosk-shell .kiosk-stage {
+    width: calc(100% - 24px);
+  }
+
+  .kiosk-shell .home-operating .home-primary-grid,
+  .kiosk-shell .home-operating .home-secondary-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .kiosk-shell .home-operating .home-primary-grid .home-card {
+    min-height: 250px;
+    padding: 24px 18px;
+  }
+
+  .kiosk-shell .home-operating .home-secondary-grid .home-card {
+    min-height: 96px;
+  }
+
+  .kiosk-shell .room-overview .room-strip {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .kiosk-shell .room-overview .room-strip article {
+    min-height: 180px;
+    aspect-ratio: auto;
+  }
+
+  .kiosk-shell .kiosk-step {
+    padding: 26px 20px;
+  }
+
+  .kiosk-shell .kiosk-step h2,
+  .kiosk-shell .status-screen h2 {
+    font-size: clamp(32px, 8vw, 40px);
+  }
+
+  .kiosk-shell .kiosk-bottom-nav {
+    width: calc(100% - 20px);
+    min-height: 96px;
+    grid-template-columns: 68px 68px minmax(0, 1fr);
+    gap: 8px;
+    padding: 8px;
+  }
+
+  .kiosk-shell .kiosk-bottom-nav > button {
+    min-height: 72px;
+    padding-inline: 8px;
+    font-size: 16px;
+  }
+
+  .kiosk-shell .guidance-detail-sheet {
+    padding: 10px;
+  }
+
+  .kiosk-shell .guidance-detail-sheet > section,
+  .kiosk-shell .guidance-detail-sheet > article,
+  .kiosk-shell .guidance-detail-sheet > div {
+    max-height: calc(100dvh - 20px);
+    padding: 24px 20px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .kiosk-shell *,
+  .kiosk-shell *::before,
+  .kiosk-shell *::after {
+    scroll-behavior: auto !important;
+  }
+}
+
+/* 27-inch customer readability and full-width action layer. */
+.kiosk-shell {
+  --kiosk27-text-small: clamp(17px, 1.45vw, 20px);
+  --kiosk27-text-body: clamp(20px, 1.85vw, 24px);
+  --kiosk27-text-control: clamp(22px, 2.1vw, 27px);
+  --kiosk27-text-section: clamp(28px, 2.8vw, 34px);
+  --kiosk27-text-title: clamp(40px, 4vw, 54px);
+  --kiosk27-text-amount: clamp(48px, 5vw, 62px);
+}
+
+.kiosk-shell .kiosk-stage {
+  width: min(1180px, calc(100% - var(--kiosk27-page-gutter) - var(--kiosk27-page-gutter)));
+}
+
+.kiosk-shell .kiosk-step,
+.kiosk-shell .kiosk-step.wide,
+.kiosk-shell .status-screen,
+.kiosk-shell .kiosk-payment-progress,
+.kiosk-shell .start-checklist {
+  width: 100%;
+  max-width: 1180px;
+  margin-inline: auto;
+}
+
+.kiosk-shell .step-eyebrow,
+.kiosk-shell .home-copy p {
+  font-size: clamp(16px, 1.4vw, 18px);
+}
+
+.kiosk-shell .kiosk-step h2,
+.kiosk-shell .status-screen h2,
+.kiosk-shell .start-checklist h2,
+.kiosk-shell .kiosk-payment-progress h2 {
+  font-size: var(--kiosk27-text-title);
+  line-height: 1.14;
+  word-break: keep-all;
+}
+
+.kiosk-shell .step-description,
+.kiosk-shell .status-screen > p:not(.step-eyebrow),
+.kiosk-shell .start-checklist-lead,
+.kiosk-shell .kiosk-payment-progress > p:not(.step-eyebrow) {
+  font-size: var(--kiosk27-text-body);
+  line-height: 1.55;
+  word-break: keep-all;
+}
+
+.kiosk-shell .kiosk-primary,
+.kiosk-shell .kiosk-secondary,
+.kiosk-shell .choice-stack > button,
+.kiosk-shell .reservation-list > button,
+.kiosk-shell .identity-split > section > button,
+.kiosk-shell .payment-method-buttons button,
+.kiosk-shell .team-submit-actions button,
+.kiosk-shell .saved-team-panel > button,
+.kiosk-shell .guidance-summary-card > button {
+  min-height: 88px;
+  font-size: var(--kiosk27-text-control);
+  word-break: keep-all;
+}
+
+.kiosk-shell .kiosk-field > span,
+.kiosk-shell .kiosk-counter b,
+.kiosk-shell .selection-total span,
+.kiosk-shell .review-row span,
+.kiosk-shell .payment-mode-tabs b,
+.kiosk-shell .payment-method-buttons.compact button > span > b {
+  font-size: var(--kiosk27-text-body);
+}
+
+.kiosk-shell .kiosk-field input,
+.kiosk-shell .kiosk-field select,
+.kiosk-shell .kiosk-field textarea,
+.kiosk-shell .extra-member-form input,
+.kiosk-shell .payment-plan-panel input {
+  min-height: 88px;
+  font-size: clamp(24px, 2.3vw, 30px);
+}
+
+.kiosk-shell .kiosk-field input::placeholder,
+.kiosk-shell .kiosk-field textarea::placeholder {
+  font-size: clamp(21px, 2vw, 27px);
+}
+
+.kiosk-shell .kiosk-counter {
+  min-height: 112px;
+  padding: 22px 26px;
+}
+
+.kiosk-shell .kiosk-counter strong,
+.kiosk-shell .selection-total b {
+  font-size: clamp(34px, 3.2vw, 44px);
+}
+
+.kiosk-shell .home-operating .home-secondary-grid .home-card {
+  min-height: 142px;
+}
+
+.kiosk-shell .home-operating .home-secondary-grid .home-card div > b {
+  font-size: clamp(24px, 2.5vw, 30px);
+  word-break: keep-all;
+}
+
+.kiosk-shell .home-operating .home-secondary-grid .home-card div > span {
+  font-size: var(--kiosk27-text-small);
+  line-height: 1.45;
+  word-break: keep-all;
+}
+
+.kiosk-shell .room-overview > header h2 {
+  font-size: var(--kiosk27-text-section);
+}
+
+.kiosk-shell .room-overview > header > span,
+.kiosk-shell .room-overview .room-code small,
+.kiosk-shell .room-overview .room-live-copy small,
+.kiosk-shell .room-overview article > em {
+  font-size: var(--kiosk27-text-small) !important;
+  word-break: keep-all;
+}
+
+.kiosk-shell .room-overview .room-live-copy strong {
+  font-size: clamp(21px, 2vw, 27px);
+}
+
+.kiosk-shell .home-game-start-cta {
+  display: grid;
+  width: 100%;
+  min-height: 152px;
+  grid-template-columns: 76px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 24px;
+  margin: 22px 0 0;
+  padding: 24px 32px;
+  border: 2px solid #ff7f4e;
+  border-radius: 28px;
+  background: linear-gradient(135deg, #fff7f2 0%, #ffe8dc 100%);
+  color: #9a3412;
+  text-align: left;
+  box-shadow: 0 16px 36px rgba(255, 90, 31, .14);
+}
+
+.kiosk-shell .home-game-start-cta .kiosk-icon {
+  width: 76px;
+  height: 76px;
+  border-radius: 24px;
+  background: linear-gradient(135deg, #ff6a30, #ef4300);
+  color: #fff;
+  font-size: 31px;
+}
+
+.kiosk-shell .home-game-start-cta > span {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.kiosk-shell .home-game-start-cta b {
+  font-size: clamp(32px, 3.2vw, 42px);
+  line-height: 1.1;
+}
+
+.kiosk-shell .home-game-start-cta small {
+  font-size: var(--kiosk27-text-body);
+  color: #b54708;
+  word-break: keep-all;
+}
+
+.kiosk-shell .home-game-start-cta > i {
+  font-size: 38px;
+  font-style: normal;
+}
+
+.kiosk-shell .home-game-start-cta:disabled {
+  opacity: .55;
+  box-shadow: none;
+}
+
+.kiosk-shell .ready-room-select-step {
+  text-align: center;
+}
+
+.kiosk-shell .ready-room-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.kiosk-shell .ready-room-list > button {
+  display: grid;
+  min-height: 180px;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: 20px;
+  padding: 26px;
+  border: 2px solid #b7ccf6;
+  border-radius: 26px;
+  background: #f5f8ff;
+  color: #172033;
+  text-align: left;
+}
+
+.kiosk-shell .ready-room-list > button > span,
+.kiosk-shell .ready-room-list > button > div {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.kiosk-shell .ready-room-list > button > span {
+  align-items: center;
+}
+
+.kiosk-shell .ready-room-list b {
+  font-size: clamp(46px, 4.5vw, 60px);
+}
+
+.kiosk-shell .ready-room-list strong,
+.kiosk-shell .ready-room-list em {
+  font-size: var(--kiosk27-text-control);
+  font-style: normal;
+}
+
+.kiosk-shell .ready-room-list em {
+  grid-column: 1 / -1;
+  padding-top: 18px;
+  border-top: 1px solid #d5e1f8;
+  color: #175cd3;
+  font-weight: 900;
+  text-align: center;
+}
+
+.kiosk-shell .ready-room-list small {
+  font-size: var(--kiosk27-text-small);
+  color: #667085;
+}
+
+.kiosk-shell .start-checklist {
+  padding: clamp(36px, 4vw, 58px);
+  border-radius: 34px;
+  text-align: center;
+}
+
+.kiosk-shell .start-game-summary {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 24px;
+  margin: 0 0 26px;
+  padding: 24px 28px;
+  border-radius: 24px;
+  background: #fff5ef;
+  text-align: left;
+}
+
+.kiosk-shell .start-game-summary > b {
+  font-size: clamp(46px, 4.6vw, 62px);
+  color: #f04b0f;
+}
+
+.kiosk-shell .start-game-summary > span,
+.kiosk-shell .start-game-summary > strong {
+  font-size: var(--kiosk27-text-control);
+  word-break: keep-all;
+}
+
+.kiosk-shell .start-game-summary > strong {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.kiosk-shell .checklist-items {
+  gap: 14px;
+  margin: 28px 0 24px;
+}
+
+.kiosk-shell .checklist-items > button {
+  display: flex;
+  width: 100%;
+  min-height: 92px;
+  align-items: center;
+  gap: 20px;
+  padding: 18px 24px;
+  border: 2px solid #e0e5ec;
+  border-radius: 22px;
+  background: #f8fafc;
+  color: #172033;
+  font-size: var(--kiosk27-text-body);
+  font-weight: 850;
+  line-height: 1.35;
+  text-align: left;
+  word-break: keep-all;
+}
+
+.kiosk-shell .checklist-items > button > b {
+  display: grid;
+  width: 46px;
+  min-width: 46px;
+  height: 46px;
+  place-items: center;
+  border: 3px solid #b6beca;
+  border-radius: 14px;
+  background: #fff;
+  color: #fff;
+  font-size: 27px;
+}
+
+.kiosk-shell .checklist-items > button.checked {
+  border-color: #70d79d;
+  background: #effbf4;
+  color: #05603a;
+}
+
+.kiosk-shell .checklist-items > button.checked > b {
+  border-color: #12b76a;
+  background: #12b76a;
+}
+
+.kiosk-shell .start-check-progress {
+  padding: 19px 24px;
+  border-radius: 18px;
+  background: #f2f4f7;
+  color: #475467;
+  font-size: var(--kiosk27-text-body);
+  font-weight: 900;
+  word-break: keep-all;
+}
+
+.kiosk-shell .start-check-progress.complete {
+  background: #e9f9ef;
+  color: #067647;
+}
+
+.kiosk-shell .game-start {
+  width: 100%;
+  min-height: 112px;
+  height: auto;
+  margin: 18px 0 24px;
+  padding: 22px 30px;
+  font-size: clamp(30px, 3.1vw, 40px);
+}
+
+.kiosk-shell .room-overview .room-ready-label {
+  color: #b54708;
+  font-weight: 900;
+}
+
+.kiosk-shell .start-countdown {
+  min-height: 112px;
+  margin-bottom: 20px;
+  padding: 20px 24px;
+}
+
+.kiosk-shell .start-countdown span,
+.kiosk-shell .start-countdown button {
+  font-size: var(--kiosk27-text-body);
+}
+
+.kiosk-shell .preparation-guide {
+  width: 100%;
+  max-width: none;
+}
+
+.kiosk-shell .preparation-guide > div {
+  min-height: 82px;
+  padding: 18px 22px;
+  font-size: var(--kiosk27-text-body);
+}
+
+.kiosk-shell .review-total b,
+.kiosk-shell .payment-progress-summary > strong,
+.kiosk-shell .payment-progress-summary b {
+  font-size: var(--kiosk27-text-amount);
+}
+
+.kiosk-shell .payment-mode-tabs b,
+.kiosk-shell .payment-method-buttons.compact button > span > b,
+.kiosk-shell .payment-plan-items > article > header strong,
+.kiosk-shell .current-payment-start {
+  font-size: var(--kiosk27-text-control);
+}
+
+.kiosk-shell .payment-mode-tabs span,
+.kiosk-shell .payment-method-buttons.compact button > span > small,
+.kiosk-shell .payment-progress-summary span,
+.kiosk-shell .payment-progress-list small {
+  font-size: var(--kiosk27-text-small);
+}
+
+.kiosk-shell .kiosk-bottom-nav {
+  width: min(1120px, calc(100% - var(--kiosk27-page-gutter) - var(--kiosk27-page-gutter)));
+  min-height: 116px;
+}
+
+.kiosk-shell .kiosk-bottom-nav > button {
+  min-height: 86px;
+  font-size: clamp(23px, 2.2vw, 29px);
+  word-break: keep-all;
+}
+
+.kiosk-shell button,
+.kiosk-shell b,
+.kiosk-shell strong,
+.kiosk-shell span,
+.kiosk-shell small,
+.kiosk-shell p,
+.kiosk-shell h1,
+.kiosk-shell h2,
+.kiosk-shell h3,
+.kiosk-shell label {
+  overflow-wrap: normal;
+  word-break: keep-all;
+}
+
+@media (orientation: portrait) and (min-width: 701px) and (max-width: 1050px) {
+  .kiosk-shell .ready-room-list {
+    grid-template-columns: 1fr;
+  }
+
+  .kiosk-shell .home-game-start-cta {
+    min-height: 140px;
+  }
+}
+
+@media (max-width: 700px) {
+  .kiosk-shell .home-game-start-cta {
+    min-height: 126px;
+    grid-template-columns: 62px minmax(0, 1fr) auto;
+    gap: 15px;
+    padding: 20px 18px;
+  }
+
+  .kiosk-shell .home-game-start-cta .kiosk-icon {
+    width: 62px;
+    height: 62px;
+  }
+
+  .kiosk-shell .ready-room-list,
+  .kiosk-shell .start-game-summary {
+    grid-template-columns: 1fr;
+  }
+
+  .kiosk-shell .start-game-summary {
+    text-align: center;
+  }
+
+  .kiosk-shell .start-game-summary > strong {
+    justify-content: center;
+  }
+
+  .kiosk-shell .kiosk-bottom-nav > button {
+    font-size: 18px;
+  }
+}

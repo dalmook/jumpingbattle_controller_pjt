@@ -1,0 +1,38 @@
+{
+  "manifest_version": 3,
+  "name": "점핑배틀 네이버 예약 자동 연동",
+  "version": "2.3.0",
+  "minimum_chrome_version": "120",
+  "permissions": [
+    "alarms",
+    "cookies",
+    "scripting",
+    "storage",
+    "webRequest"
+  ],
+  "host_permissions": [
+    "https://partner.booking.naver.com/*",
+    "https://api-partner.booking.naver.com/*",
+    "https://prod-partner.io.naver.com/*",
+    "https://script.google.com/*",
+    "https://script.googleusercontent.com/*",
+    "https://your-site.example/*"
+  ],
+  "background": {
+    "service_worker": "sw.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://partner.booking.naver.com/*"
+      ],
+      "js": [
+        "fast-trigger.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {
+    "default_title": "네이버 예약 수집 및 재고 자동 동기화"
+  }
+}
