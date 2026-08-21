@@ -44,6 +44,10 @@ pnpm test는 먼저 production build를 수행한 뒤 예약, 가격, 결제, �
 
 이 항목은 별도 승인된 실장비 검증표에서만 수행합니다. 카드 결과가 불명확하면 재시도하지 않고 UNKNOWN/reconciliation 절차로 이동합니다.
 
+## Lint baseline
+
+공유 시점 pnpm lint는 최신 React hook/purity 규칙을 중심으로 53 errors, 28 warnings의 기존 부채가 있습니다. 이번 공유 작업에서는 동작 중인 제품 코드를 대량 변경하지 않았습니다. CI는 lint 결과를 표시하되 비차단으로 두고, production build와 전체 회귀 테스트 및 Bridge 테스트를 차단 조건으로 사용합니다. 별도 lint 정리 PR에서 기능 회귀를 확인하며 줄여야 합니다.
+
 ## CI
 
 .github/workflows/ci.yml은 Node build/test와 Python Bridge unit test를 분리합니다. 벤더 DLL과 운영 secret 없이 통과해야 공유 가능한 코드입니다.

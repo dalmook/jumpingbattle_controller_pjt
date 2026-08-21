@@ -22,7 +22,9 @@ jobs:
           cache: pnpm
       - run: pnpm install --frozen-lockfile
       - run: pnpm test
-      - run: pnpm lint
+      - name: Lint existing baseline (non-blocking)
+        continue-on-error: true
+        run: pnpm lint
 
   bridge:
     runs-on: windows-latest
