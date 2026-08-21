@@ -1,0 +1,160 @@
+{
+  "version": "7",
+  "dialect": "sqlite",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "6",
+      "when": 1784968944493,
+      "tag": "0000_burly_genesis",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "6",
+      "when": 1785027490139,
+      "tag": "0001_wooden_krista_starr",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "6",
+      "when": 1785037026925,
+      "tag": "0002_sleepy_whistler",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "6",
+      "when": 1785381212108,
+      "tag": "0003_dapper_the_professor",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "6",
+      "when": 1785383277022,
+      "tag": "0004_shallow_spirit",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "6",
+      "when": 1785397634690,
+      "tag": "0005_true_black_tom",
+      "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "6",
+      "when": 1785406291905,
+      "tag": "0006_outgoing_the_watchers",
+      "breakpoints": true
+    },
+    {
+      "idx": 7,
+      "version": "6",
+      "when": 1785413033304,
+      "tag": "0007_acoustic_metal_master",
+      "breakpoints": true
+    },
+    {
+      "idx": 8,
+      "version": "6",
+      "when": 1785551229236,
+      "tag": "0008_amazing_ares",
+      "breakpoints": true
+    },
+    {
+      "idx": 9,
+      "version": "6",
+      "when": 1785560794652,
+      "tag": "0009_closed_spectrum",
+      "breakpoints": true
+    },
+    {
+      "idx": 10,
+      "version": "6",
+      "when": 1785561201599,
+      "tag": "0010_polite_madame_web",
+      "breakpoints": true
+    },
+    {
+      "idx": 11,
+      "version": "6",
+      "when": 1785562646893,
+      "tag": "0011_fat_mariko_yashida",
+      "breakpoints": true
+    },
+    {
+      "idx": 12,
+      "version": "6",
+      "when": 1785576361525,
+      "tag": "0012_superb_loners",
+      "breakpoints": true
+    },
+    {
+      "idx": 13,
+      "version": "6",
+      "when": 1785633078639,
+      "tag": "0013_keep_naver_operation_state",
+      "breakpoints": true
+    },
+    {
+      "idx": 14,
+      "version": "6",
+      "when": 1785686400000,
+      "tag": "0014_pricing_settings",
+      "breakpoints": true
+    },
+    {
+      "idx": 15,
+      "version": "6",
+      "when": 1785715200000,
+      "tag": "0015_restore_august_first_sale",
+      "breakpoints": true
+    },
+    {
+      "idx": 16,
+      "version": "6",
+      "when": 1786106572730,
+      "tag": "0016_chemical_shadow_king",
+      "breakpoints": true
+    },
+    {
+      "idx": 17,
+      "version": "6",
+      "when": 1786154021066,
+      "tag": "0017_needy_rumiko_fujikawa",
+      "breakpoints": true
+    },
+    {
+      "idx": 18,
+      "version": "6",
+      "when": 1786155439298,
+      "tag": "0018_clear_titania",
+      "breakpoints": true
+    },
+    {
+      "idx": 19,
+      "version": "6",
+      "when": 1786320000000,
+      "tag": "0019_mpos_payment_attempts",
+      "breakpoints": true
+    },
+    {
+      "idx": 20,
+      "version": "6",
+      "when": 1786347000000,
+      "tag": "0020_split_payments",
+      "breakpoints": true
+    },
+    {
+      "idx": 21,
+      "version": "6",
+      "when": 1786359600000,
+      "tag": "0021_members",
+      "breakpoints": true
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "host": "192.0.2.54",
+  "port": 4600,
+  "dll_path": "vendor/FDK_Module_64bit.dll",
+  "business_number": "",
+  "timeout_seconds": 40,
+  "status_retries": 1,
+  "database_path": "data/mpos_transactions.db",
+  "log_path": "logs/mpos_lan.log"
+}

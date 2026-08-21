@@ -1,0 +1,68 @@
+:root {
+  --touch-press-scale: .982;
+  --touch-transition: 110ms cubic-bezier(.2, .8, .2, 1);
+  --touch-focus-color: rgba(255, 90, 31, .28);
+  --touch-selected-border: #ff6a30;
+  --touch-selected-bg: #fff5ef;
+  --touch-selected-shadow: 0 8px 20px rgba(255, 90, 31, .12);
+}
+
+.touch-feedback-scope :where(button, a[href], [role="button"]) {
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+.touch-feedback-scope :where(button:not(:disabled), a[href], [role="button"]:not([aria-disabled="true"])) {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  transition:
+    transform var(--touch-transition),
+    filter var(--touch-transition),
+    border-color var(--touch-transition),
+    background-color var(--touch-transition),
+    box-shadow var(--touch-transition);
+}
+
+.touch-feedback-scope :where(button:not(:disabled), a[href], [role="button"]:not([aria-disabled="true"])):active,
+.touch-feedback-scope :where(button:not(:disabled), a[href], [role="button"]:not([aria-disabled="true"])).is-touching {
+  transform: scale(var(--touch-press-scale));
+  filter: brightness(.97) saturate(1.04);
+}
+
+.touch-feedback-scope :where(button, a[href], [role="button"]):focus-visible {
+  outline: 3px solid var(--touch-focus-color);
+  outline-offset: 3px;
+}
+
+.touch-feedback-scope :where(button, a[href], [role="button"]) > .touch-ripple {
+  position: absolute;
+  z-index: 5;
+  border-radius: 50%;
+  background: currentColor;
+  pointer-events: none;
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0);
+  animation: touch-ripple-expand 430ms ease-out;
+}
+
+.touch-feedback-scope :where(.selected, [aria-pressed="true"], [aria-selected="true"]) {
+  border-color: var(--touch-selected-border);
+  background-color: var(--touch-selected-bg);
+  box-shadow: var(--touch-selected-shadow);
+}
+
+@keyframes touch-ripple-expand {
+  12% { opacity: .14; }
+  100% { opacity: 0; transform: translate(-50%, -50%) scale(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .touch-feedback-scope :where(button, a[href], [role="button"]) {
+    transition-duration: 1ms;
+  }
+
+  .touch-feedback-scope .touch-ripple {
+    animation-duration: 1ms;
+  }
+}

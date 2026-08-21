@@ -1,0 +1,46 @@
+{
+  "name": "jumping-battle-remote",
+  "version": "0.3.3",
+  "private": true,
+  "engines": {
+    "node": ">=22.13.0"
+  },
+  "scripts": {
+    "dev": "vinext dev",
+    "build": "vinext build",
+    "test:local-direct": "node --experimental-strip-types --test tests/payment-transport-routing.test.mjs tests/migration-0042.test.mjs",
+    "test:kiosk-operating-flow": "node --test tests/migration-0048.test.mjs tests/migration-0049.test.mjs tests/migration-0050.test.mjs",
+    "build:naver-collector": "powershell -ExecutionPolicy Bypass -File scripts/build-naver-collector.ps1",
+    "start": "vinext start",
+    "test": "pnpm run build && node --experimental-strip-types --test tests/import-source-state.test.mjs tests/difficulty-mapping.test.mjs tests/reservation-time.test.mjs tests/sales-classification.test.mjs tests/add-on-allocation.test.mjs tests/game-history.test.mjs tests/notification-schedule.test.mjs tests/split-payments.test.mjs tests/group-payments.test.mjs tests/payment-ui-state.test.mjs tests/payment-reconciliation.test.mjs tests/payment-time.test.mjs tests/bridge-capabilities.test.mjs tests/parking-registration.test.mjs tests/members.test.mjs tests/member-benefits.test.mjs tests/member-coupons.test.mjs tests/customer-member.test.mjs tests/member-password.test.mjs tests/pass-use.test.mjs tests/pass-purchase-credit.test.mjs tests/kiosk-flow.test.mjs tests/kiosk-hangul-composer.test.mjs tests/kiosk-auto-assign-runtime.test.mjs tests/kiosk-payment-settings.test.mjs tests/kiosk-cleanup.test.mjs tests/kiosk-checkout-cancel.test.mjs tests/ui-operation-locks.test.mjs tests/remote-operations.test.mjs tests/control-readiness.test.mjs && node --test tests/availability.test.mjs tests/migration-0012.test.mjs tests/migration-0013.test.mjs tests/migration-0014.test.mjs tests/migration-0015.test.mjs tests/migration-0018.test.mjs tests/migration-0019.test.mjs tests/migration-0020.test.mjs tests/migration-0021.test.mjs tests/migration-0022.test.mjs tests/migration-0023.test.mjs tests/migration-0024.test.mjs tests/migration-0025.test.mjs tests/migration-0026.test.mjs tests/migration-0027.test.mjs tests/migration-0028.test.mjs tests/migration-0029.test.mjs tests/migration-0030.test.mjs tests/migration-0031.test.mjs tests/migration-0032.test.mjs tests/migration-0034.test.mjs tests/migration-0035.test.mjs tests/migration-0036.test.mjs tests/migration-0037.test.mjs tests/migration-0038.test.mjs tests/migration-0040.test.mjs tests/migration-0041.test.mjs tests/migration-0043.test.mjs tests/migration-0044.test.mjs tests/migration-0045.test.mjs tests/migration-0046.test.mjs tests/migration-0047.test.mjs tests/migration-0051.test.mjs tests/payment-latency.test.mjs tests/rendered-html.test.mjs tests/pos-v2.test.mjs && node naver-collector/state-harness.test.cjs",
+    "lint": "eslint . --ignore-pattern dist --ignore-pattern .next",
+    "db:generate": "drizzle-kit generate"
+  },
+  "dependencies": {
+    "drizzle-orm": "0.45.2",
+    "next": "16.2.6",
+    "qrcode": "^1.5.4",
+    "react": "19.2.6",
+    "react-dom": "19.2.6"
+  },
+  "devDependencies": {
+    "@cloudflare/vite-plugin": "1.37.1",
+    "@tailwindcss/postcss": "4.2.1",
+    "@types/node": "22.19.19",
+    "@types/qrcode": "^1.5.6",
+    "@types/react": "19.2.14",
+    "@types/react-dom": "19.2.3",
+    "@vitejs/plugin-react": "6.0.2",
+    "@vitejs/plugin-rsc": "0.5.26",
+    "drizzle-kit": "0.31.10",
+    "eslint": "9.39.4",
+    "eslint-config-next": "16.2.6",
+    "react-server-dom-webpack": "19.2.6",
+    "tailwindcss": "4.2.1",
+    "typescript": "5.9.3",
+    "vinext": "0.0.50",
+    "vite": "8.0.13",
+    "wrangler": "4.92.0"
+  },
+  "type": "module"
+}
