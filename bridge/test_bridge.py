@@ -2553,7 +2553,9 @@ class BridgeTests(unittest.TestCase):
             bridge._automatic_stops = lambda: None
 
             set_config_armed(config_path, False)
-            bridge.run_once()
+            next_mtime = (bridge._config_mtime_ns or 0) + 1
+            with patch.object(bridge, "_config_timestamp", return_value=next_mtime):
+                bridge.run_once()
 
             self.assertFalse(bridge.config.armed)
 
