@@ -14,6 +14,7 @@ Bridge는 Cloud command를 매장 Windows PC에서 받아 Legacy Manager, MPOS L
 
 ## 시작
 
+    python -m pip install -r requirements.txt
     copy bridge-config.example.json bridge-config.json
     python -B jumping_bridge.py --config bridge-config.json
 

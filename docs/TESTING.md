@@ -15,6 +15,7 @@ pnpm test는 먼저 production build를 수행한 뒤 예약, 가격, 결제, �
 
 ## Bridge
 
+    python -m pip install -r bridge\requirements.txt
     python -B -m unittest discover -s bridge -p "test_*.py"
 
 -B는 __pycache__ 생성을 막습니다. 테스트는 장비 없이 실행되는 mock 경로여야 합니다.

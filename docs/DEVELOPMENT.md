@@ -45,6 +45,7 @@ PARKING_USER_ID와 PARKING_PASSWORD는 cloud hosting에 넣지 않고 Store Brid
 
 ## Bridge 개발
 
+    python -m pip install -r bridge\requirements.txt
     copy bridge\bridge-config.example.json bridge\bridge-config.json
     python -B bridge\jumping_bridge.py --config bridge\bridge-config.json
 

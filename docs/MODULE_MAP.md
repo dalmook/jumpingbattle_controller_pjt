@@ -62,6 +62,7 @@
 ## Bridge와 Manager Control
 
 - bridge/jumping_bridge.py: polling, heartbeat, command dispatch, Manager 제어
+- bridge/requirements.txt: Windows UI adapter 개발 의존성
 - bridge/control_latency.py, bridge/latency_trace.py: 제어 지연 관측
 - db/control.ts: Cloud command queue
 - db/remote-operations.ts: set_info/start/stop와 room 상태
